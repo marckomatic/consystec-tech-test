@@ -1,0 +1,8 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.logo-img{
+  width: 150px;
+  filter: invert(100%);
+}

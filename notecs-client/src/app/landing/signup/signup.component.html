@@ -1,0 +1,36 @@
+<app-toolbar></app-toolbar>
+
+<div class="signup-container">
+  <div class="form-section">
+    <div class="logo-container">
+      <img class="logo-img" src="notecs.png" />
+    </div>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+      <h2>Registrarse</h2>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" formControlName="correo" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="contrasena" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Repetir Contraseña</mat-label>
+        <input matInput type="password" formControlName="repetirContrasena" required />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="full-width">Crear cuenta</button>
+    </form>
+  </div>
+
+  <div class="image-section"></div>
+</div>

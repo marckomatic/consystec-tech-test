@@ -1,0 +1,62 @@
+h1{
+    margin: auto;
+    width: fit-content;
+    margin-bottom: 20px;
+}
+
+.dashboard-container {
+    padding: 2rem;
+    background-color: rgb(246, 239, 254);
+
+  }
+  
+.buscador {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 2rem;
+    margin: auto;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+}
+
+.notas-grid {
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content:space-evenly;
+}
+
+.card-header{
+    border-bottom: 1px solid rgb(207, 207, 207);
+    margin-bottom: 8px;
+}
+
+.nota-card {
+    width: 300px;
+    min-height: fit-content;
+    max-height: 300px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 0.5rem;
+    overflow: hidden;
+
+
+}
+
+.nota-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.titulo-nota {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.fecha-nota {
+    font-size: 0.85rem;
+    color: gray;
+}

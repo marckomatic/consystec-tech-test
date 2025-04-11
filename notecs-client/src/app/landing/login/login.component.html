@@ -1,0 +1,29 @@
+<app-toolbar></app-toolbar>
+
+<div class="login-container">
+    <div class="image-section"></div>
+  
+    <div class="form-section">
+    <div class="logo-container">
+        <img class="logo-img" src="notecs.png" />
+    </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+
+        <h2>Iniciar sesión</h2>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuario</mat-label>
+          <input matInput formControlName="usuario" required />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="contrasena" required />
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" class="full-width">Login</button>
+        <button mat-raised-button color="accent" class="full-width">Registrarse</button>
+      </form>
+    </div>
+  </div>
+  

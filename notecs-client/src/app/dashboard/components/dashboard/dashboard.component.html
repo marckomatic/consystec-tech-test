@@ -1,0 +1,29 @@
+<app-toolbar></app-toolbar>
+<div class="dashboard-container">
+    <h1>Notas del Usuario</h1>
+
+    <mat-form-field appearance="outline" class="buscador">
+        <mat-label>Buscar notas</mat-label>
+        <input matInput [formControl]="filtro" placeholder="Filtra por título, contenido o fecha" />
+    </mat-form-field>
+    
+    <div class="notas-grid">
+        <mat-card
+        class="nota-card"
+        *ngFor="let nota of notasFiltradas"
+        (click)="seleccionarNota(nota)"
+        >
+        <mat-card-header class="card-header">
+            <mat-card-title>
+            <div class="titulo-nota">{{ nota.title }}</div>
+            <div class="fecha-nota">{{ nota.date }}</div>
+            </mat-card-title>
+        </mat-card-header>
+    
+        <mat-card-content>
+            <p>{{ nota.content }}</p>
+        </mat-card-content>
+        </mat-card>
+    </div>
+    </div>
+    
