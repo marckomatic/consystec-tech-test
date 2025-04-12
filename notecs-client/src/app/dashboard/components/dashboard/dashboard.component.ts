@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { EditorComponent } from '../editor/editor.component';
+import { MatDialog } from '@angular/material/dialog';
 
 interface Nota {
   id: number;
@@ -20,8 +22,11 @@ export class DashboardComponent implements OnInit {
   notasFiltradas: Nota[] = [];
   filtro = new FormControl('');
 
+  constructor(private dialog: MatDialog){
+
+  }
+
   ngOnInit(): void {
-    // Notas simuladas
     this.notas = Array.from({ length: 15 }).map((_, i) => ({
       id: i + 1,
       title: `Nota ${i + 1}`,
@@ -43,6 +48,20 @@ export class DashboardComponent implements OnInit {
 
   seleccionarNota(nota: Nota) {
     console.log('Nota seleccionada:', nota);
-    // Aquí puedes navegar a una vista de detalle si lo deseas
+  }
+
+  crearNota(nota: Nota | null){
+    const dialogRef = this.dialog.open(EditorComponent, {
+      width: '500px',
+      data: nota,
+    });
+  
+    dialogRef.afterClosed().subscribe((result:any) => {
+      if (result) {
+        console.log('Nota guardada:', result);
+      } else {
+        console.log('Edición cancelada');
+      }
+    });
   }
 }

@@ -1,0 +1,22 @@
+.titulo-input {
+    width: 100%;
+}
+  
+.campo-titulo{
+    margin-top: 0.3rem;
+}
+
+.campo-textarea {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.titulo{
+    margin-bottom: 5px;
+}
+  
+.content{
+    padding-bottom: 0px;
+}

@@ -60,3 +60,10 @@ h1{
     font-size: 0.85rem;
     color: gray;
 }
+
+.add-button{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 900;
+}

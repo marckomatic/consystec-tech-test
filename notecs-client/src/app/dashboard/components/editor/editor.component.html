@@ -1,0 +1,20 @@
+<h1 mat-dialog-title class="titulo">
+    Nueva Nota
+</h1>
+
+<div mat-dialog-content class="content">
+<mat-form-field appearance="outline" class="campo-titulo">
+    <mat-label>Titulo</mat-label>
+    <input matInput [(ngModel)]="nota.title" placeholder="Título de la nota" class="titulo-input" />
+</mat-form-field>
+
+<mat-form-field appearance="outline" class="campo-textarea">
+    <mat-label>Contenido</mat-label>
+    <textarea matInput [(ngModel)]="nota.content" rows="8"></textarea>
+</mat-form-field>
+</div>
+
+<div mat-dialog-actions align="end">
+<button mat-button (click)="cancelar()">Cancelar</button>
+<button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+</div>

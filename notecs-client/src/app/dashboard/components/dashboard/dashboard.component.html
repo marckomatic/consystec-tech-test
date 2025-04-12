@@ -1,4 +1,8 @@
 <app-toolbar></app-toolbar>
+<button mat-fab class="add-button" color="primary" (click)="crearNota(null)">
+    <mat-icon>add</mat-icon>
+
+</button>
 <div class="dashboard-container">
     <h1>Notas del Usuario</h1>
 
@@ -11,7 +15,7 @@
         <mat-card
         class="nota-card"
         *ngFor="let nota of notasFiltradas"
-        (click)="seleccionarNota(nota)"
+        (click)="crearNota(nota)"
         >
         <mat-card-header class="card-header">
             <mat-card-title>
