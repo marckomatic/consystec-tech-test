@@ -1,0 +1,19 @@
+CREATE DATABASE IF NOT EXISTS notas_app;
+USE notas_app;
+
+CREATE TABLE users (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(70) NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE notes (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(50) NOT NULL,
+    content VARCHAR(400) NOT NULL,
+    date DATE NOT NULL,
+    user_id BIGINT,
+    completed bool,
+    FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
+);
