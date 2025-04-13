@@ -1,12 +1,13 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-interface Nota {
+interface Tarea {
   id?: number;
   title: string;
   content: string;
   userId?: number;
   date: string;
+  completed: boolean;
 }
 
 @Component({
@@ -16,39 +17,41 @@ interface Nota {
   standalone: false,
 })
 export class EditorComponent {
-  nota: Nota;
+  tarea: Tarea;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Nota | null,
+    @Inject(MAT_DIALOG_DATA) public data: Tarea | null,
     private dialogRef: MatDialogRef<EditorComponent>
   ) {
 
-    this.nota = data? { ...data }
+    this.tarea = data? { ...data }
       : {
           title: 'Sin Título',
           content: '',
           date: '',
+          completed: false
         };
 
-        console.log(this.nota)
+        console.log(this.tarea)
 
   }
 
   guardar() {
     const fecha = new Date();
-    const meses = [
-      'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
-      'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
-    ];
+    this.tarea.date = this.formatDate(fecha);
 
-    const fechaFormateada = `${fecha.getDate()} de ${meses[fecha.getMonth()]} de ${fecha.getFullYear()}`;
-
-    this.nota.date = fechaFormateada;
-
-    this.dialogRef.close(this.nota);
+    this.dialogRef.close(this.tarea);
   }
 
   cancelar() {
     this.dialogRef.close(null);
+  }
+
+  formatDate(date:Date) {
+    const day = date.getDate();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    
+    return `${day}/${month}/${year}`;
   }
 }

@@ -7,6 +7,8 @@ import { ToolbarComponent } from "./shared-components/toolbar/toolbar.component"
 import { LoginComponent } from './landing/login/login.component';
 import { MaterialModule } from './material/material.module';
 import { SignupComponent } from './landing/signup/signup.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,11 @@ import { SignupComponent } from './landing/signup/signup.component';
     AppRoutingModule,
     ToolbarComponent,
     MaterialModule
+], 
+providers:[
+  { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+
 ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

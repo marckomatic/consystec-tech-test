@@ -1,32 +1,61 @@
 <app-toolbar></app-toolbar>
-<button mat-fab class="add-button" color="primary" (click)="crearNota(null)">
+<button mat-fab class="add-button" color="primary" (click)="creartarea(null)">
     <mat-icon>add</mat-icon>
 
 </button>
 <div class="dashboard-container">
-    <h1>Notas del Usuario</h1>
+    <h1>Tareas de {{userName}}</h1>
 
-    <mat-form-field appearance="outline" class="buscador">
-        <mat-label>Buscar notas</mat-label>
-        <input matInput [formControl]="filtro" placeholder="Filtra por título, contenido o fecha" />
-    </mat-form-field>
-    
-    <div class="notas-grid">
-        <mat-card
-        class="nota-card"
-        *ngFor="let nota of notasFiltradas"
-        (click)="crearNota(nota)"
-        >
-        <mat-card-header class="card-header">
-            <mat-card-title>
-            <div class="titulo-nota">{{ nota.title }}</div>
-            <div class="fecha-nota">{{ nota.date }}</div>
-            </mat-card-title>
-        </mat-card-header>
-    
-        <mat-card-content>
-            <p>{{ nota.content }}</p>
-        </mat-card-content>
+    <div class="filtros-container">
+        <mat-form-field appearance="outline" class="buscador">
+          <mat-label>Buscar tareas</mat-label> 
+          <input matInput [formControl]="filtro" placeholder="Busca por nombre, detalles o fecha" />
+        </mat-form-field>
+      
+        <mat-form-field appearance="outline" class="estado-select">
+          <mat-label>Estado</mat-label>
+          <mat-select [value]="estadoSeleccionado" (selectionChange)="onEstadoChange($event.value)">
+            <mat-option value="Todas">Todas</mat-option>
+            <mat-option value="Completada">Completada</mat-option>
+            <mat-option value="No completada">No completada</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+      
+    <div class="tareas-grid">
+            <mat-card
+            class="tarea-card"
+            *ngFor="let tarea of tareasFiltradas"
+            (click)="creartarea(tarea)"
+            >
+            <mat-card-header class="card-header">
+                <mat-card-title>
+                <div class="titulo-tarea">{{ tarea.title }}</div>
+                <span class="completed-label" *ngIf="tarea.completed">Completada <mat-icon class="completed-icon">check</mat-icon></span>
+                <div class="fecha-tarea">{{ tarea.date }}</div>
+                </mat-card-title>
+            </mat-card-header>
+        
+            <mat-card-content>
+                <p>{{ tarea.content }}</p>
+            </mat-card-content>
+        
+            <div class="overlay">
+                <div class="buttons">
+
+                    <button mat-icon-button color="primary"
+                            matTooltip="Marcar como completada" 
+                            (click)="confirmTask(tarea, $event)">
+                        <mat-icon>check</mat-icon>
+                    </button>
+                    <button mat-icon-button 
+                    color="primary"
+                    matTooltip="Eliminar tarea" 
+                    (click)="deleteTask(tarea, $event)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
         </mat-card>
     </div>
     </div>

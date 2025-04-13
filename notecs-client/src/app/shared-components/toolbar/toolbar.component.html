@@ -1,7 +1,14 @@
 <mat-toolbar color="primary">
     <img class="logo-img" src="notecs.png"/>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
+    <button mat-icon-button class="example-icon">
+      <mat-icon matTooltip="Compartir">share</mat-icon>
     </button>
+    <button mat-icon-button class="example-icon" *ngIf="urlActual.includes('dashboard')" (click)="logout()" matTooltip="Cerrar Sesion">
+      <mat-icon >logout</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon"  *ngIf="urlActual.includes('signup')" (click)="navigateToLogin()" matTooltip="Iniciar Sesion">
+      <mat-icon >login</mat-icon>
+    </button>
+
 </mat-toolbar>
