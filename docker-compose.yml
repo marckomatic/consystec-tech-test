@@ -2,17 +2,17 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./backend
+      context: ./notecs-app
       dockerfile: Dockerfile
 
-    expose:
-      - "8080"
+    ports:
+      - "8080:8080"    
     networks:
       - app-network
 
   frontend:
     build:
-      context: ./frontend
+      context: ./notecs-client
       dockerfile: Dockerfile
     ports:
       - "80:80"  
